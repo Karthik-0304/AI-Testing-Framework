@@ -44,8 +44,7 @@ AI Testing Framework/
 │   ├── test_gemini_connection.py
 │   └── test_gemini_shipment.py
 ├── test_data/
-├── reports/
-│   └── full_test_report.html
+├── reports/                 # Generated reports (created locally)
 ├── .gitignore
 ├── pytest.ini
 ├── requirements.txt
@@ -136,6 +135,16 @@ Invoke-Item reports/full_test_report.html
 
 The report displays the results of the latest test run. Review the test summary and individual failures when troubleshooting.
 
+## How the Framework Works
+
+1. **Request Shipment Data:** The framework retrieves trusted shipment details from the shipment API.
+2. **Generate an AI Response:** Google Gemini generates an answer to a shipment-related prompt.
+3. **Evaluate the Response:** The evaluator checks the AI response against the trusted shipment status and destination.
+4. **Validate Expected Behavior:** Automated tests check correct answers, incorrect statuses, conflicting information, and other negative scenarios.
+5. **Generate Test Results:** Pytest executes the tests and can generate an HTML report containing the results.
+
+This workflow demonstrates how API automation and AI response validation can be combined to test the accuracy and consistency of LLM-generated answers.
+
 ## AI Response Evaluation
 
 The evaluator compares an AI-generated response with trusted shipment data.
@@ -157,9 +166,16 @@ The evaluator returns a result containing:
 
 ## Current Test Coverage
 
-The latest recorded full test run completed with **17 passed tests**, covering environment setup, AI response evaluation, Gemini integration, and shipment API behavior.
+The latest recorded full test run completed with **17 passed tests**.
 
-Test results can vary because live Gemini API calls depend on external service availability.
+The test suite covers:
+
+- **Environment Setup:** Verify the testing environment is configured correctly.
+- **Shipment API:** Validate shipment details, response fields, and invalid shipment IDs.
+- **AI Response Evaluation:** Check shipment status, destination, negation, and conflicting information.
+- **Gemini Integration:** Verify live AI responses and shipment-related answers.
+
+**Note:** Gemini integration tests require a valid API key and internet access. Results may vary depending on external API availability.
 
 ## Future Enhancements
 
