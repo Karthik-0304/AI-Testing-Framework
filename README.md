@@ -63,8 +63,8 @@ AI Testing Framework/
 ### 1. Clone the Repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd "AI Testing Framework"
+git clone https://github.com/Karthik-0304/AI-Testing-Framework.git
+cd AI-Testing-Framework
 ```
 
 Replace the placeholder with your actual GitHub repository URL.
